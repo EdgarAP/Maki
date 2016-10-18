@@ -16,5 +16,11 @@ namespace Maki_Installer
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            IU.Form2 frm2 = new IU.Form2();
+            frm2.Show();
+        }
     }
 }
