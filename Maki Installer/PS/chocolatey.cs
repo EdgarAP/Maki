@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Management.Automation;
 
 namespace Maki_Installer.PS
@@ -8,9 +9,9 @@ namespace Maki_Installer.PS
     {
         internal class Chocolatey
         {
-            private List<string> invoke(string command)
+            private Collection<string> invoke(string command)
             {
-                List<string> list = new List<string>();
+                Collection<string> list = new Collection<string>();
 
                 foreach (string str in PowerShell.Create().AddScript(command).Invoke<string>())
                 {
@@ -19,58 +20,40 @@ namespace Maki_Installer.PS
                 return list;
             }
 
-            internal bool install(string package, string version)
+            internal Collection<string> install(string package, string version)
             {
                 return install(package + " --version " + version);
             }
 
-            internal bool install(string package)
+            internal Collection<string> install(string package)
             {
                 string command = "choco install " + package + " -y --allowemptychecksum";
-                List<string> list = invoke(command);
-                foreach (string abc in list)
-                {
-                    if (abc.Contains("0 packages failed"))
-                        return true;
-                }
-                return false;
+                return invoke(command);
+                // if (abc.Contains("0 packages failed"))
             }
 
-            internal bool upgrade(string package)
+            internal Collection<string> upgrade(string package)
             {
                 string command = "choco upgrade " + package + " -y --allowemptychecksum";
-                List<string> list = invoke(command);
-                foreach (string abc in list)
-                {
-                    if (abc.Contains("0 packages failed"))
-                        return true;
-                }
-                return false;
+                return invoke(command);
             }
 
-            internal List<string> outdated()
+            internal Collection<string> outdated()
             {
                 return invoke("choco outdated");
             }
 
-            internal bool uninstall(string package)
+            internal Collection<string> uninstall(string package)
             {
                 string command = "choco uninstall " + package + " -y --remove-dependencies";
-                List<string> list = invoke(command);
-                foreach (string abc in list)
-                {
-                    if (abc.Contains("0 packages failed"))
-                        return true;
-                }
-                return false;
-
+                return invoke(command);
             }
 
-            internal List<string> listLocal()
+            internal Collection<string> listLocal()
             {
                 return invoke("choco list -l");
             }
-            internal List<string> listAll(string filter)
+            internal Collection<string> listAll(string filter)
             {
                 return invoke("choco list -l");
             }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Management.Automation;
+using System.Collections.ObjectModel;
 
 namespace Maki_Installer.PS
 {
@@ -10,51 +12,58 @@ namespace Maki_Installer.PS
     {
         private Chocolatey chocolate = new Chocolatey();
         private Chocolatey.Pin chocopin = new Chocolatey.Pin();
+        private PSObjectInvoker oneget = new PSObjectInvoker();
 
-        internal bool install(string package)
-        {
-            return chocolate.install(package);
-        }
-        internal bool install(string package, string version)
+
+        // CHOCOLATEY 
+        internal Collection<string> install(string package, string version)
         {
             return chocolate.install(package, version);
-        }
-        internal bool upgrade(string package)
+        } //instala el paquete que se le pase en la versión que se le pida
+        internal Collection<string> install(string package)
+        {
+            return chocolate.install(package);
+        } //instala el paquete que se le pase
+        internal Collection<string> upgrade(string package)
         {
             return chocolate.upgrade(package);
-        }
-        internal List<string> outdated()
+        } //actualiza el paquete que se le pase
+        internal Collection<string> outdated()
         {
             return chocolate.outdated();
-        }
-        internal bool uninstall(string package)
+        } //Devuelve una lista con todos los paquetes desactualizados
+        internal Collection<string> uninstall(string package)
         {
             return chocolate.uninstall(package);
-        }
-        internal List<string> listLocal()
+        } //desinstala el paquete que se le pase
+        internal Collection<string> listLocal()
         {
             return chocolate.listLocal();
-        }
-        internal List<string> listAll(string filter = "")
+        } //lista de los paquetes instalados
+        internal Collection<string> listRemote(string filter = "")
         {
             return chocolate.listAll(filter);
-        }
+        } //lista de los paquetes en el repositorio de chocolatey (prefiero usar oneget para esto) 
         internal string pinAdd(string package, string version)
         {
             return chocopin.Add(package, version);
-        }
+        }  //hace que un paquete se quede en la versión que se pida
         internal string pinAdd(string package)
         {
             return chocopin.Add(package);
-        }
+        } //hace que un paquete se quede en la versión instalada
         internal string pinRemove(string package)
         {
             return chocopin.Remove(package);
-        }
+        } //quita el bloqueo de actualización
         internal string pinList()
         {
             return chocopin.List();
-        }
+        } //listea los paquetes que están bloqueados de actualizarse
+
+        //ONEGET
+        internal Collection<PSObject> 
+
     }//psmanager
 }//namespace
 

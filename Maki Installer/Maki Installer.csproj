@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\InstalledPackage.cs" />
+    <Compile Include="Business\Package.cs" />
+    <Compile Include="Business\PinnedPackage.cs" />
+    <Compile Include="Business\RepositoryPackage.cs" />
+    <Compile Include="PS\PSObjectInvoker.cs" />
+    <Compile Include="PS\StaticInfo.cs" />
     <Compile Include="IU\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PS\Chocolatey.cs" />
     <Compile Include="PS\PSmanager.cs" />
+    <Compile Include="PS\TesteosPS.cs" />
     <EmbeddedResource Include="IU\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,9 +111,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Business\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
