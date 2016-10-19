@@ -38,21 +38,13 @@ namespace Maki_Installer.PS
                 string a = count.Value.ToString();
                 if (count == null) { throw new InvalidOperationException("The object returned doesn't have a 'count' property"); }
         */
-        private void invokeVoid(string script)
+        internal Collection<PSObject> getPackageListRemote(string path)
         {
-            using (Runspace myRunSpace = RunspaceFactory.CreateRunspace())
-            {
-                myRunSpace.Open();
-
-                using (PowerShell powershell = PowerShell.Create())
-                {
-                    powershell.Runspace = myRunSpace;
-                    powershell.AddScript("c:\\_\\script.ps1");
-                    powershell.Invoke();
-                }
-                myRunSpace.Close();
-
-            }//using runspace
-        }//method
+            return invokePS("$p=Find-Package -source chocolatey;$p|Export-Clixml "+path+";$p");
+        }
+        internal Collection<PSObject> getPackageListLocal(string path)
+        {
+            return invokePS("Import-Clixml " + path);
+        }
     }
 }

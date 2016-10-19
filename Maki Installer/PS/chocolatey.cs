@@ -5,8 +5,7 @@ using System.Management.Automation;
 namespace Maki_Installer.PS
 {
 
-    internal partial class PSmanager
-    {
+
         internal class Chocolatey
         {
             private Collection<string> invoke(string command)
@@ -81,5 +80,4 @@ namespace Maki_Installer.PS
                 }
             }//pin
         }//choco
-    }//PSmanager
 }//namespace

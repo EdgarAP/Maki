@@ -11,6 +11,5 @@ namespace Maki_Installer.PS
         internal static string makiFolderPath = "C:\\MakiTemporal\\";
         internal static string installedPkgPath= makiFolderPath + "Installed.csv";
         internal static string repositoryPkgPath = makiFolderPath + "Installed.csv";
-
     }
 }

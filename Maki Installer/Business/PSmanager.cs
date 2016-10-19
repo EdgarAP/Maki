@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using System.Management.Automation;
 using System.Collections.ObjectModel;
 
-namespace Maki_Installer.PS
+
+namespace Maki_Installer.Business
 {
     internal partial class PSmanager
     {
-        private Chocolatey chocolate = new Chocolatey();
-        private Chocolatey.Pin chocopin = new Chocolatey.Pin();
-        private PSObjectInvoker oneget = new PSObjectInvoker();
+        private PS.Chocolatey chocolate = new PS.Chocolatey();
+        private PS.Chocolatey.Pin chocopin = new PS.Chocolatey.Pin();
+        private PS.PSObjectInvoker oneget = new PS.PSObjectInvoker();
 
 
         // CHOCOLATEY 
@@ -62,7 +63,14 @@ namespace Maki_Installer.PS
         } //listea los paquetes que están bloqueados de actualizarse
 
         //ONEGET
-        internal Collection<PSObject> 
+        internal Collection<PSObject> getPackageListRemote()
+        {
+          return oneget.getPackageListRemote(PS.StaticInfo.repositoryPkgPath);
+        } //return a list of all oneget packages available in REMOTE REPOSITORY and OVERWRITES LOCAL File (161MB so far) 
+        internal Collection<PSObject> getPackageListLocal()
+        {
+            return oneget.getPackageListLocal(PS.StaticInfo.repositoryPkgPath);
+        } //return a list of all oneget packages available LOCALLY STORED
 
     }//psmanager
 }//namespace
