@@ -8,7 +8,7 @@ using System.Management.Automation.Runspaces;
 using System.Collections.ObjectModel;
 
 namespace Maki_Installer.PS
-{
+{ //Carlos Salgado
     class TesteosPS
     {
         private Collection<PSObject> buenasPracticasPsobject()

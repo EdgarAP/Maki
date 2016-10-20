@@ -7,8 +7,8 @@ namespace Maki_Installer.PS
 
 
         internal class Chocolatey
-        {
-            private Collection<string> invoke(string command)
+    { //Carlos Salgado
+        private Collection<string> invoke(string command)
             {
                 Collection<string> list = new Collection<string>();
 

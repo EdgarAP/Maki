@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 namespace Maki_Installer.Business
 {
     internal partial class PSmanager
-    {
+    { //Carlos Salgado
         private PS.Chocolatey chocolate = new PS.Chocolatey();
         private PS.Chocolatey.Pin chocopin = new PS.Chocolatey.Pin();
         private PS.PSObjectInvoker oneget = new PS.PSObjectInvoker();

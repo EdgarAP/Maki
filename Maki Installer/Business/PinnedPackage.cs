@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace Maki_Installer.Business
 {
     class PinnedPackage : Package
-    {
+    { //Carlos Salgado
         internal List<ChocoPackage> pinned;
-        internal List<ChocoPackage> pinnedUpdate;
     }
 }

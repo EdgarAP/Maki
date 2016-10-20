@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 namespace Maki_Installer.PS
 {
     class PSObjectInvoker
-    {
+    { //Carlos Salgado
         private Collection<PSObject> invokePS(string script)
         {
             Collection<PSObject> result;
@@ -25,10 +25,7 @@ namespace Maki_Installer.PS
                     result = powershell.Invoke();
                 }
                 powershell = null;
-                if (result == null || result.Count != 1)
-                {
-                    throw new InvalidOperationException("Algo ha fallado::no hay resultados");
-                }
+              //  if (result == null || result.Count != 1)                {                    throw new InvalidOperationException("Algo ha fallado::no hay resultados"); }
                 myRunSpace.Close();
                 return result;
             }//using runspace

@@ -14,7 +14,7 @@ using System.Windows.Forms;
 namespace Maki_Installer.IU
 {
     public partial class Form2 : Form
-    {
+    { //Carlos Salgado
         public Form2()
         {
             InitializeComponent();
@@ -27,35 +27,16 @@ namespace Maki_Installer.IU
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Collection<PSObject> result;
-            using (Runspace myRunSpace = RunspaceFactory.CreateRunspace())
+            /*
+            Collection<Business.Package.OneGetPackage> display = new Collection<Business.Package.OneGetPackage>();
+            Business.RepositoryPackage repo = new Business.RepositoryPackage();
+            display = repo.getAllPackages();
+            foreach (Business.Package.OneGetPackage a in display)
             {
-                myRunSpace.Open();
-                PowerShell powershell = PowerShell.Create();
-                powershell.Runspace = myRunSpace;
+                textBox1.AppendText(a.name);
+            }
+            */
 
-                using (powershell)
-                {
-                    powershell.AddCommand("get-process");
-                    powershell.AddCommand("Measure");
-                    result = powershell.Invoke();
-                }
-
-                powershell = null;
-
-                if (result == null || result.Count != 1)
-                {
-                    throw new InvalidOperationException("Algo ha fallado::no hay resultados");
-                }
-
-                PSMemberInfo count = result[0].Properties["Count"];
-                string a = count.Value.ToString();
-                if (count == null) { throw new InvalidOperationException("The object returned doesn't have a 'count' property"); }
-                textBox1.AppendText(a);
-
-                myRunSpace.Close();
-
-            }//using runspace
         }
     }
 }
