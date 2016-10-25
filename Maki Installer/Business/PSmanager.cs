@@ -72,6 +72,10 @@ namespace Maki_Installer.Business
             return oneget.getPackageListLocal(PS.StaticInfo.repositoryPkgPath);
         } //return a list of all oneget packages available LOCALLY STORED
 
+        internal void invoke(string script)
+        {
+            oneget.invoke(script);
+        }
     }//psmanager
 }//namespace
 

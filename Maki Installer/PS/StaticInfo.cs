@@ -9,6 +9,7 @@ namespace Maki_Installer.PS
     internal static class StaticInfo
     {
         internal static string makiFolderPath = "C:\\MakiTemporal";
+        internal static string startupPath = System.IO.Directory.GetCurrentDirectory();
         internal static string installedPkgPath= makiFolderPath + "\\Installed.xml";
         internal static string repositoryPkgPath = makiFolderPath + "\\Repository.xml";
     }

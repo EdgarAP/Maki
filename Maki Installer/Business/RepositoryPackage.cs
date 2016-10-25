@@ -13,18 +13,26 @@ namespace Maki_Installer.Business
         internal Collection<OneGetPackage> repository;
         bool isWriting;
 
-        private void updateRemote()
+        internal void updateRemote()
         {
-
+            PSmanager man = new PSmanager();
+            Collection<PSObject> bruto = man.getPackageListRemote();
+            isWriting = true;
+            repository = convertPSOtoOGP(bruto);
+            isWriting = false;
+        }
+        private void updateLocal()
+        {
             PSmanager man = new PSmanager();
             Collection<PSObject> bruto = man.getPackageListLocal();
             isWriting = true;
             repository = convertPSOtoOGP(bruto);
             isWriting = false;
         }
+
         internal Collection<OneGetPackage> getAllPackages()
         {
-            updateRemote();
+            updateLocal();
             return repository;
         }
     }

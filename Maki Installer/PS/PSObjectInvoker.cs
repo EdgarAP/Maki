@@ -37,11 +37,26 @@ namespace Maki_Installer.PS
         */
         internal Collection<PSObject> getPackageListRemote(string path)
         { //no va, find-package no devuelve lo que toca. 
-            return invokePS("$obj=find-package -source chocolatey|select -Property 'name','version','summary','status';$obj|Export-Clixml "+path+" -Force;$obj");
+            return invokePS("$obj=find-package -source chocolatey|select -Property 'name','version','summary','status';$obj|Export-Clixml "+path+"\\Repository.xml -Force;");
         }
         internal Collection<PSObject> getPackageListLocal(string path)
         {
             return invokePS("Import-Clixml " + path);
+        }
+        internal void invoke(string script)
+        {
+            using (Runspace myRunSpace = RunspaceFactory.CreateRunspace())
+            {
+                myRunSpace.Open();
+
+                using (PowerShell powershell = PowerShell.Create())
+                {
+                    powershell.Runspace = myRunSpace;
+                    powershell.AddScript("script");
+                    powershell.Invoke();
+                }
+                myRunSpace.Close();
+            }
         }
     }
 }

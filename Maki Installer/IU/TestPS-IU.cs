@@ -40,5 +40,13 @@ namespace Maki_Installer.IU
             
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Business.RepositoryPackage repo = new Business.RepositoryPackage();
+            repo.updateRemote();
+            progressBar1.Value = 100;
+            progressBar1.Update();
+        }
     }
 }
