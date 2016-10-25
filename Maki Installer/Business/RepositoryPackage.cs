@@ -17,7 +17,7 @@ namespace Maki_Installer.Business
         {
 
             PSmanager man = new PSmanager();
-            Collection<PSObject> bruto = man.getPackageListRemote();
+            Collection<PSObject> bruto = man.getPackageListLocal();
             isWriting = true;
             repository = convertPSOtoOGP(bruto);
             isWriting = false;

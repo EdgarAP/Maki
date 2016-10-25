@@ -27,15 +27,17 @@ namespace Maki_Installer.IU
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /*
             Collection<Business.Package.OneGetPackage> display = new Collection<Business.Package.OneGetPackage>();
             Business.RepositoryPackage repo = new Business.RepositoryPackage();
             display = repo.getAllPackages();
             foreach (Business.Package.OneGetPackage a in display)
             {
-                textBox1.AppendText(a.name);
+                textBox1.AppendText(a.name + "\n");
+                textBox2.AppendText(a.status + "\n");
+                textBox3.AppendText(a.version + "\n");
+                textBox4.AppendText(a.summary + "\n");
             }
-            */
+            
 
         }
     }

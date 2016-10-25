@@ -8,8 +8,8 @@ namespace Maki_Installer.PS
 {  //Carlos Salgado
     internal static class StaticInfo
     {
-        internal static string makiFolderPath = "C:\\MakiTemporal\\";
-        internal static string installedPkgPath= makiFolderPath + "Installed.csv";
-        internal static string repositoryPkgPath = makiFolderPath + "Installed.csv";
+        internal static string makiFolderPath = "C:\\MakiTemporal";
+        internal static string installedPkgPath= makiFolderPath + "\\Installed.xml";
+        internal static string repositoryPkgPath = makiFolderPath + "\\Repository.xml";
     }
 }

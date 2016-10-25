@@ -79,7 +79,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PS\Chocolatey.cs" />
     <Compile Include="Business\PSmanager.cs" />
-    <Compile Include="PS\TesteosPS.cs" />
     <EmbeddedResource Include="IU\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>

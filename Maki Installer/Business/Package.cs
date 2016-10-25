@@ -14,7 +14,6 @@ namespace Maki_Installer.Business
         {
         
             internal string status;
-            internal string searchKey;
             internal string summary;
             internal string name;
             internal string version;
@@ -37,15 +36,13 @@ namespace Maki_Installer.Business
             foreach (PSObject pso in psc)
             {
                 count = pso.Properties["Status"];
-                result.status = count.Value.ToString();
-                count = pso.Properties["SearchKey"];
-                result.searchKey = count.Value.ToString();
+                result.status = count.Value.ToString()  ?? " ";
                 count = pso.Properties["Summary"];
-                result.summary = count.Value.ToString();
+                if (count.Value != null) result.summary = count.Value.ToString() ?? " ";
                 count = pso.Properties["Name"];
-                result.name = count.Value.ToString();
+                result.name = count.Value.ToString() ?? " ";
                 count = pso.Properties["Version"];
-                result.version = count.Value.ToString();
+                result.version = count.Value.ToString() ?? " ";
                 result1.Add(result);
             }
             return result1;
@@ -54,15 +51,13 @@ namespace Maki_Installer.Business
         {
             OneGetPackage result = new OneGetPackage();
             PSMemberInfo count = pso.Properties["Status"];
-            result.status = count.Value.ToString();
-            count = pso.Properties["SearchKey"];
-            result.searchKey = count.Value.ToString();
+            result.status = count.Value.ToString() ?? " ";
             count = pso.Properties["Summary"];
-            result.summary = count.Value.ToString();
+            result.summary = count.Value.ToString() ?? " ";
             count = pso.Properties["Name"];
-            result.name = count.Value.ToString();
+            result.name = count.Value.ToString() ?? " ";
             count = pso.Properties["Version"];
-            result.version = count.Value.ToString();
+            result.version = count.Value.ToString() ?? " ";
 
             return result;
         }

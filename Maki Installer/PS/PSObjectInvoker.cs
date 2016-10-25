@@ -25,7 +25,7 @@ namespace Maki_Installer.PS
                     result = powershell.Invoke();
                 }
                 powershell = null;
-              //  if (result == null || result.Count != 1)                {                    throw new InvalidOperationException("Algo ha fallado::no hay resultados"); }
+                //if (result == null || result.Count != 1) {throw new InvalidOperationException("Algo ha fallado::no hay resultados"); }
                 myRunSpace.Close();
                 return result;
             }//using runspace
@@ -36,8 +36,8 @@ namespace Maki_Installer.PS
                 if (count == null) { throw new InvalidOperationException("The object returned doesn't have a 'count' property"); }
         */
         internal Collection<PSObject> getPackageListRemote(string path)
-        {
-            return invokePS("$p=Find-Package -source chocolatey;$p|Export-Clixml "+path+";$p");
+        { //no va, find-package no devuelve lo que toca. 
+            return invokePS("$obj=find-package -source chocolatey|select -Property 'name','version','summary','status';$obj|Export-Clixml "+path+" -Force;$obj");
         }
         internal Collection<PSObject> getPackageListLocal(string path)
         {
