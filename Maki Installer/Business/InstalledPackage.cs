@@ -9,6 +9,6 @@ namespace Maki_Installer.Business
     class InstalledPackage : Package
     { //Carlos Salgado
         internal List<ChocoPackage> installed;
-
+        internal List<ChocoPackage> outdated;
     }
 }
