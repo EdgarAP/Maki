@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\InstalledPackage.cs" />
+    <Compile Include="Business\MakiInstaller.cs" />
     <Compile Include="Business\Package.cs" />
     <Compile Include="Business\PinnedPackage.cs" />
     <Compile Include="Business\RepositoryPackage.cs" />
