@@ -27,33 +27,24 @@ namespace Maki_Installer.IU
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            Business.MakiInstaller maki = new Business.MakiInstaller();
-            Collection<string> display = maki.installFirefox();
-            foreach (string a in display)
-            {
-                textBox1.AppendText(a);
-            }
-          /*  PARA MOSTRAR TODOS LOS ELEMENTOS DEL REPOSITORIO LOCAL 
-              
-              Collection<Business.Package.OneGetPackage> display = new Collection<Business.Package.OneGetPackage>();
-              display = maki.getAllPackages();
-               foreach (Business.Package.OneGetPackage a in display)
+            Collection<Business.Package.OneGetPackage> display = new Collection<Business.Package.OneGetPackage>();
+            Business.RepositoryPackage repo = new Business.RepositoryPackage();
+            display = repo.getAllPackages();
+            foreach (Business.Package.OneGetPackage a in display)
             {
                 textBox1.AppendText(a.name + "\n");
                 textBox2.AppendText(a.status + "\n");
                 textBox3.AppendText(a.version + "\n");
                 textBox4.AppendText(a.summary + "\n");
             }
-            */
-
+            
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Business.MakiInstaller maki = new Business.MakiInstaller();
-            maki.updateRemoteRepository();
+            Business.RepositoryPackage repo = new Business.RepositoryPackage();
+            repo.updateRemote();
             progressBar1.Value = 100;
             progressBar1.Update();
         }

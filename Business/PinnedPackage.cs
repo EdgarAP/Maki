@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Maki_Installer.Business
 {
-    class InstalledPackage : Package
+    class PinnedPackage : Package
     { //Carlos Salgado
-        internal List<ChocoPackage> installed;
-        internal List<ChocoPackage> outdated;
+        internal List<ChocoPackage> pinned;
     }
 }

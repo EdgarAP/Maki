@@ -26,6 +26,7 @@ namespace Maki_Installer.Business
         }
         
         private void update() {}
+        bool isWriting;
 
         internal static Collection<OneGetPackage> convertPSOtoOGP(Collection<PSObject> psc)
         {

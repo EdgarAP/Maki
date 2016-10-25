@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,36 +9,40 @@ using System.Collections.ObjectModel;
 
 namespace Maki_Installer.PS
 {
-    class PSObjectInvoker
-    { //Carlos Salgado
-        private Collection<PSObject> invokePS(string script)
+    class BuenasPracticasALaHoraDeUsarPowerShell
+    {
+
+        private Collection<PSObject> buenasPracticasPsobject()
         {
-            Collection<PSObject> result;
+            Collection<PSObject> result;    
             using (Runspace myRunSpace = RunspaceFactory.CreateRunspace())
             {
                 myRunSpace.Open();
                 PowerShell powershell = PowerShell.Create();
                 powershell.Runspace = myRunSpace;
+
                 using (powershell)
                 {
-                    powershell.AddScript(script);
+                    powershell.AddCommand("get-process");
+                    powershell.AddCommand("measure-object");
                     result = powershell.Invoke();
                 }
+
                 powershell = null;
+
+                if (result == null || result.Count != 1){throw new InvalidOperationException( "Algo ha fallado::no hay resultados");}
+
+                PSMemberInfo count = result[0].Properties["Count"];
+                if (count == null){throw new InvalidOperationException("The object returned doesn't have a 'count' property");}
+                
+
                 myRunSpace.Close();
                 return result;
+
             }//using runspace
         }//method
 
-        internal Collection<PSObject> getPackageListRemote(string path)
-        { //no va, find-package no devuelve lo que toca. 
-            return invokePS("$obj=find-package -source chocolatey|select -Property 'name','version','summary','status';$obj|Export-Clixml "+path+"\\Repository.xml -Force;");
-        }
-        internal Collection<PSObject> getPackageListLocal(string path)
-        {
-            return invokePS("Import-Clixml " + path);
-        }
-        internal void invoke(string script)
+        private void buenasPracticasVoid()
         {
             using (Runspace myRunSpace = RunspaceFactory.CreateRunspace())
             {
@@ -47,11 +51,16 @@ namespace Maki_Installer.PS
                 using (PowerShell powershell = PowerShell.Create())
                 {
                     powershell.Runspace = myRunSpace;
-                    powershell.AddScript("script");
+                    powershell.AddScript("c:\\_\\script.ps1");
                     powershell.Invoke();
                 }
                 myRunSpace.Close();
+
             }
         }
-    }
-}
+    }//class
+}//namesace
+
+
+
+
