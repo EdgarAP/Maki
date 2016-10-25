@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Maki_Installer.Business.InstalledPackage" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Business\InstalledPackage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Maki_Installer.Business.MakiInstaller" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAABAAAAIIAAAEAAAABQAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Business\MakiInstaller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Maki_Installer.Business.Package" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAEAAA=</HashCode>
+      <FileName>Business\Package.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Maki_Installer.Business.PinnedPackage" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Business\PinnedPackage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Maki_Installer.Business.PSmanager" Collapsed="true">
+    <Position X="9" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQAAAAACAAAEQAgCAAABAAAJAAAAAAgQEAAAAAAABA=</HashCode>
+      <FileName>Business\PSmanager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Maki_Installer.Business.RepositoryPackage" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Business\RepositoryPackage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Maki_Installer.Form1" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAIAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>IU\MainWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Maki_Installer.Program" Collapsed="true">
+    <Position X="6.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Maki_Installer.IU.Form2" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAIAQACAAAAAAAACAAABCIAAYAAAAEGAAAAAAAAA=</HashCode>
+      <FileName>IU\TestPS-IU.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Maki_Installer.Properties.Resources" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Maki_Installer.Properties.Settings" Collapsed="true">
+    <Position X="6.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Maki_Installer.PS.Chocolatey" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAgCAAABABAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PS\Chocolatey.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Maki_Installer.PS.PSObjectInvoker" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAACAAAAAAABAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PS\PSObjectInvoker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Maki_Installer.PS.StaticInfo" Collapsed="true">
+    <Position X="9" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAQAA=</HashCode>
+      <FileName>PS\StaticInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

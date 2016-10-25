@@ -32,8 +32,9 @@ namespace Maki_Installer.IU
             Collection<string> display = maki.installFirefox();
             foreach (string a in display)
             {
-                textBox1.AppendText(a);
+                textBox4.AppendText(a +"\n");
             }
+           // if(display.Contains("0 packages failed")) return viva!
           /*  PARA MOSTRAR TODOS LOS ELEMENTOS DEL REPOSITORIO LOCAL 
               
               Collection<Business.Package.OneGetPackage> display = new Collection<Business.Package.OneGetPackage>();
