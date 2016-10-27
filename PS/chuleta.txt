@@ -1,0 +1,66 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Management.Automation;
+using System.Management.Automation.Runspaces;
+using System.Collections.ObjectModel;
+
+namespace Maki_Installer.PS
+{
+    class BuenasPracticasALaHoraDeUsarPowerShell
+    {
+
+        private Collection<PSObject> buenasPracticasPsobject()
+        {
+            Collection<PSObject> result;    
+            using (Runspace myRunSpace = RunspaceFactory.CreateRunspace())
+            {
+                myRunSpace.Open();
+                PowerShell powershell = PowerShell.Create();
+                powershell.Runspace = myRunSpace;
+
+                using (powershell)
+                {
+                    powershell.AddCommand("get-process");
+                    powershell.AddCommand("measure-object");
+                    result = powershell.Invoke();
+                }
+
+                powershell = null;
+
+                if (result == null || result.Count != 1){throw new InvalidOperationException( "Algo ha fallado::no hay resultados");}
+
+                PSMemberInfo count = result[0].Properties["Count"];
+                if (count == null){throw new InvalidOperationException("The object returned doesn't have a 'count' property");}
+                
+
+                myRunSpace.Close();
+                return result;
+
+            }//using runspace
+        }//method
+
+        private void buenasPracticasVoid()
+        {
+            using (Runspace myRunSpace = RunspaceFactory.CreateRunspace())
+            {
+                myRunSpace.Open();
+
+                using (PowerShell powershell = PowerShell.Create())
+                {
+                    powershell.Runspace = myRunSpace;
+                    powershell.AddScript("c:\\_\\script.ps1");
+                    powershell.Invoke();
+                }
+                myRunSpace.Close();
+
+            }
+        }
+    }//class
+}//namesace
+
+
+
+

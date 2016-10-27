@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\InstalledPackage.cs" />
-    <Compile Include="Business\MakiInstaller.cs" />
     <Compile Include="Business\Package.cs" />
     <Compile Include="Business\PinnedPackage.cs" />
     <Compile Include="Business\RepositoryPackage.cs" />
@@ -98,7 +97,6 @@
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
