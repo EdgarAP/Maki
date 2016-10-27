@@ -68,6 +68,9 @@
     <Compile Include="IU\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="PS\Installation.cs" />
+    <Compile Include="PS\OneGet.cs" />
+    <Compile Include="PS\PSInvoker.cs" />
     <Compile Include="PS\PSObjectInvoker.cs" />
     <Compile Include="PS\StaticInfo.cs" />
     <Compile Include="IU\MainWindow.cs">

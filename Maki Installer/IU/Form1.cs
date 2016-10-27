@@ -104,9 +104,9 @@ namespace Maki_Installer.IU
             lista.Add(chrome);
             dataGridView1.DataSource = lista;
            
-            Column3.DataPropertyName = "Name";
-            Version.DataPropertyName = "Version";
-            Descripcion.DataPropertyName = "Summary";
+            Column3.DataPropertyName = "name";
+            Version.DataPropertyName = "version";
+            Descripcion.DataPropertyName = "summary";
 
             
         }
