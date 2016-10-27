@@ -109,7 +109,6 @@ namespace Maki_Installer.IU
             Descripcion.DataPropertyName = "Summary";
 
             
-            
         }
 
         private void makiInstallerBindingSource_CurrentChanged(object sender, EventArgs e)

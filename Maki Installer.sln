@@ -5,16 +5,21 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maki Installer", "Maki Installer\Maki Installer.csproj", "{8A06DB73-EC16-4690-A2A7-3AF4FE90B412}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "InstallMaki", "InstallMaki\InstallMaki.vdproj", "{8ED90598-E7D4-4554-AD6D-003B74D3FCDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8A06DB73-EC16-4690-A2A7-3AF4FE90B412}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A06DB73-EC16-4690-A2A7-3AF4FE90B412}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A06DB73-EC16-4690-A2A7-3AF4FE90B412}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{8A06DB73-EC16-4690-A2A7-3AF4FE90B412}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{8A06DB73-EC16-4690-A2A7-3AF4FE90B412}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A06DB73-EC16-4690-A2A7-3AF4FE90B412}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ED90598-E7D4-4554-AD6D-003B74D3FCDB}.Debug|Any CPU.ActiveCfg = Release
+		{8ED90598-E7D4-4554-AD6D-003B74D3FCDB}.Debug|Any CPU.Build.0 = Release
+		{8ED90598-E7D4-4554-AD6D-003B74D3FCDB}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
