@@ -25,16 +25,11 @@ namespace Maki_Installer.PS
                     result = powershell.Invoke();
                 }
                 powershell = null;
-                //if (result == null || result.Count != 1) {throw new InvalidOperationException("Algo ha fallado::no hay resultados"); }
                 myRunSpace.Close();
                 return result;
             }//using runspace
         }//method
-        /*
-                PSMemberInfo count = result[0].Properties["Id"];
-                string a = count.Value.ToString();
-                if (count == null) { throw new InvalidOperationException("The object returned doesn't have a 'count' property"); }
-        */
+
         internal Collection<PSObject> getPackageListRemote(string path)
         { //no va, find-package no devuelve lo que toca. 
             return invokePS("$obj=find-package -source chocolatey|select -Property 'name','version','summary','status';$obj|Export-Clixml "+path+"\\Repository.xml -Force;");
