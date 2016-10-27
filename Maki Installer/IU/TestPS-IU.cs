@@ -35,9 +35,9 @@ namespace Maki_Installer.IU
                 textBox4.AppendText(a +"\n");
             }
            // if(display.Contains("0 packages failed")) return viva!
-          /*  PARA MOSTRAR TODOS LOS ELEMENTOS DEL REPOSITORIO LOCAL 
+            //PARA MOSTRAR TODOS LOS ELEMENTOS DEL REPOSITORIO LOCAL 
               
-              Collection<Business.Package.OneGetPackage> display = new Collection<Business.Package.OneGetPackage>();
+             /* Collection<Business.Package.OneGetPackage> display = new Collection<Business.Package.OneGetPackage>();
               display = maki.getAllPackages();
                foreach (Business.Package.OneGetPackage a in display)
             {
@@ -45,8 +45,8 @@ namespace Maki_Installer.IU
                 textBox2.AppendText(a.status + "\n");
                 textBox3.AppendText(a.version + "\n");
                 textBox4.AppendText(a.summary + "\n");
-            }
-            */
+            }*/
+            
 
 
         }

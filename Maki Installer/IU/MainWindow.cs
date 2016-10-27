@@ -22,5 +22,17 @@ namespace Maki_Installer
             IU.Form2 frm2 = new IU.Form2();
             frm2.Show();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+       
+        private void button2_Click(object sender, EventArgs e)
+        {            
+            IU.Form1 frm1 = new IU.Form1();
+            frm1.Show();
+        }
     }
 }
