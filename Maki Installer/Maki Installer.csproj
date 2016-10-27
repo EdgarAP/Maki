@@ -62,7 +62,9 @@
     <Compile Include="Business\Package.cs" />
     <Compile Include="Business\PinnedPackage.cs" />
     <Compile Include="Business\RepositoryPackage.cs" />
-    <Compile Include="PS\PSObjectInvoker.cs" />
+    <Compile Include="PS\Installation.cs" />
+    <Compile Include="PS\PSInvoker.cs" />
+    <Compile Include="PS\OneGet.cs" />
     <Compile Include="PS\StaticInfo.cs" />
     <Compile Include="IU\MainWindow.cs">
       <SubType>Form</SubType>
