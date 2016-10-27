@@ -6,18 +6,8 @@ namespace Maki_Installer.PS
 {
 
 
-        internal class Chocolatey
-    { //Carlos Salgado
-        private Collection<string> invoke(string command)
-            {
-                Collection<string> list = new Collection<string>();
-
-                foreach (string str in PowerShell.Create().AddScript(command).Invoke<string>())
-                {
-                    list.Add(str);
-                }
-                return list;
-            }
+        internal class Chocolatey : PSInvoker
+    {        //Carlos Salgado
 
             internal Collection<string> install(string package, string version)
             {
@@ -27,34 +17,34 @@ namespace Maki_Installer.PS
             internal Collection<string> install(string package)
             {
                 string command = "choco install " + package + " -y --allowemptychecksum";
-                return invoke(command);
+                return invokeString(command);
                 // if (abc.Contains("0 packages failed"))
             }
 
             internal Collection<string> upgrade(string package)
             {
                 string command = "choco upgrade " + package + " -y --allowemptychecksum";
-                return invoke(command);
+                return invokeString(command);
             }
 
             internal Collection<string> outdated()
             {
-                return invoke("choco outdated");
+                return invokeString("choco outdated");
             }
 
             internal Collection<string> uninstall(string package)
             {
                 string command = "choco uninstall " + package + " -y --remove-dependencies";
-                return invoke(command);
+                return invokeString(command);
             }
 
             internal Collection<string> listLocal()
             {
-                return invoke("choco list -l");
+                return invokeString("choco list -l");
             }
             internal Collection<string> listAll(string filter)
             {
-                return invoke("choco list -l");
+                return invokeString("choco list -l");
             }
             internal class Pin
             {

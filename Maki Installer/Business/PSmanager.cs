@@ -11,10 +11,11 @@ namespace Maki_Installer.Business
 {
     internal partial class PSmanager
     { //Carlos Salgado
+
         private PS.Chocolatey chocolate = new PS.Chocolatey();
         private PS.Chocolatey.Pin chocopin = new PS.Chocolatey.Pin();
-        private PS.PSObjectInvoker oneget = new PS.PSObjectInvoker();
-
+        private PS.OneGet oneget = new PS.OneGet();
+        private PS.Installation inst = new PS.Installation();
 
         // CHOCOLATEY 
         internal Collection<string> install(string package, string version)
@@ -65,17 +66,26 @@ namespace Maki_Installer.Business
         //ONEGET
         internal Collection<PSObject> getPackageListRemote()
         {
-          return oneget.getPackageListRemote(PS.StaticInfo.repositoryPkgPath);
+          return oneget.getPackageListRemote();
         } //return a list of all oneget packages available in REMOTE REPOSITORY and OVERWRITES LOCAL File (161MB so far) 
         internal Collection<PSObject> getPackageListLocal()
         {
-            return oneget.getPackageListLocal(PS.StaticInfo.repositoryPkgPath);
+            return oneget.getPackageListLocal();
         } //return a list of all oneget packages available LOCALLY STORED
 
-        internal void invoke(string script)
+        //INSTALL
+        internal bool installChoco()
         {
-            oneget.invoke(script);
-        }
+            if (inst.isChocoInstalled())
+                return true;
+            else
+            {
+                inst.setExecutionPolicy();
+                inst.installChocolatey();
+                if (inst.isChocoInstalled()) { return true; }
+                else return false;
+            }
+        } //Installs chocolatey, return true if its installed, false if installation failed
     }//psmanager
 }//namespace
 

@@ -10,53 +10,14 @@ namespace Maki_Installer.Business
 {
     internal abstract class Package
     { //Carlos Salgado
-        public struct OneGetPackage
+        internal struct OneGetPackage
         {
         
             internal string status;
             internal string summary;
-            public string name;
+            internal string name;
             internal string version;
-
-            public string Name
-            {
-                get
-                {
-                    return name;
-                }
-
-                set
-                {
-                    name = value;
-                }
-            }
-            public string Version
-            {
-                get
-                {
-                    return version;
-                }
-
-                set
-                {
-                    version = value;
-                }
-            }
-            public string Summary
-            {
-                get
-                {
-                    return summary;
-                }
-
-                set
-                {
-                    summary = value;
-                }
-            }
         }
-
-        
 
         internal struct ChocoPackage 
         {
