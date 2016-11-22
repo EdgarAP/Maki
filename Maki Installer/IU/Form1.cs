@@ -15,6 +15,7 @@ namespace Maki_Installer.IU
 {
     public partial class Form1 : Form
     {
+        Business.MakiInstaller maki = new Business.MakiInstaller();
         internal PSmanager man = new PSmanager();
         
         public Form1()
@@ -35,7 +36,7 @@ namespace Maki_Installer.IU
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Business.MakiInstaller maki = new Business.MakiInstaller();
+            
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 DataGridViewCheckBoxCell checkBoxCell = row.Cells[0] as DataGridViewCheckBoxCell;
@@ -47,6 +48,7 @@ namespace Maki_Installer.IU
                     nombre += (string)row.Cells["Column3"].Value;
                     Console.WriteLine(nombre);
                     Collection<string> display = man.install(nombre);
+                    
                  
                     
                     foreach (string a in display)
@@ -108,7 +110,24 @@ namespace Maki_Installer.IU
             Version.DataPropertyName = "version";
             Descripcion.DataPropertyName = "summary";
 
-            
+
+            /*Collection < string > listaInstalados = man.listLocal();
+            foreach(string a in listaInstalados)
+                debugText.AppendText(a + "\n");
+            dataGridView2.DataSource = listaInstalados;
+            InstaladoNombre.DataPropertyName = "";*/
+
+            Collection<Business.Package.OneGetPackage> listaInstalados = new Collection<Business.Package.OneGetPackage>();
+            listaInstalados = maki.getInstalledPackageList();
+            dataGridView2.DataSource = listaInstalados;
+
+            miMakiNombre.DataPropertyName = "name";
+            miMakiVersion.DataPropertyName = "version";
+            miMakiDescripcion.DataPropertyName = "summary";
+
+
+
+
         }
 
         private void makiInstallerBindingSource_CurrentChanged(object sender, EventArgs e)
@@ -126,6 +145,52 @@ namespace Maki_Installer.IU
 
         }
 
+        private void instalados_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void gridInstalados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void miMakiActualizar_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                DataGridViewCheckBoxCell checkBoxCell = row.Cells[0] as DataGridViewCheckBoxCell;
+                bool checkBox = (null != checkBoxCell && null != checkBoxCell.Value && true == (bool)checkBoxCell.Value);
+                if (checkBox == true)
+                {
+                    Console.WriteLine("Ola k ase");
+                    string nombre = "";
+                    nombre += (string)row.Cells["miMakiSelec"].Value;
+                    Console.WriteLine(nombre);
+                    Collection<string> display = man.upgrade(nombre);
+
+
+
+                    foreach (string a in display)
+                    {
+                        debugText.AppendText(a + "\n");
+
+                    }
+                    debugText.AppendText("\n");
+                    debugText.AppendText("\n");
+                }
+            }
+
+        }
     }
 }

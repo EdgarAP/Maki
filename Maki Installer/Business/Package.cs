@@ -110,6 +110,26 @@ namespace Maki_Installer.Business
 
             return result;
         }
+        /* CONVIERTE UN STRING A OGP CON EL SUMMARY Y STATUS EN BLANCO (PARA PAQUETES INSTALADOS) */
+        internal static Collection<OneGetPackage> convertStringtoOGP(Collection<string> str)
+        {
+            Collection<OneGetPackage> result1 = new Collection<OneGetPackage>();
+            OneGetPackage result = new OneGetPackage();
+            string count;
+            foreach (string s in str)
+            {
+                int index = s.LastIndexOf(" ");
+                count = s.Substring(0, index);
+                result.name = count;
+                count = s.Substring(index + 1);
+                result.version = count;
+                result.summary = "";
+                result.status = "";
+                result1.Add(result);
+            }
+            return result1;
+        }
+
         //convertPSOtoCP
         //convertOGPtoCP
         //convertCPtoOGP

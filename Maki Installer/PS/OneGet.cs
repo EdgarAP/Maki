@@ -9,9 +9,9 @@ using System.Collections.ObjectModel;
 
 namespace Maki_Installer.PS
 {
-    class OneGet : PSInvoker
+    class OneGet : PSInvoker 
     { //Carlos Salgado
-
+        PowerShell powershell = PowerShell.Create();
         internal Collection<PSObject> getPackageListRemote()
         { //no va, find-package no devuelve lo que toca. 
             return invokePSObject("$obj=find-package -source chocolatey|select -Property 'name','version','summary','status';$obj|Export-Clixml "+ StaticInfo.repositoryPkgPath + "\\Repository.xml -Force;");
@@ -19,6 +19,11 @@ namespace Maki_Installer.PS
         internal Collection<PSObject> getPackageListLocal()
         {
             return invokePSObject("Import-Clixml " + StaticInfo.repositoryPkgPath);
+        }
+
+        internal Collection<string> getInstalledPackageList()
+        {
+            return invokeString("choco list -l | where { ($_) -notlike \"*choco*\"} | where { ($_) -notlike \"*packages installed*\"}");
         }
     }
 }

@@ -41,20 +41,24 @@
             this.Version = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Form3 = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Debug = new System.Windows.Forms.TabPage();
             this.debugText = new System.Windows.Forms.TextBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.miMakiSelec = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.miMakiImagen = new System.Windows.Forms.DataGridViewImageColumn();
+            this.miMakiNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.miMakiVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.miMakiDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.packageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.makiInstallerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.miMakiDesinstalar = new System.Windows.Forms.Button();
+            this.miMakiActualizar = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.Form3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.Debug.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.makiInstallerBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -187,6 +191,8 @@
             // 
             // Form3
             // 
+            this.Form3.Controls.Add(this.miMakiActualizar);
+            this.Form3.Controls.Add(this.miMakiDesinstalar);
             this.Form3.Controls.Add(this.dataGridView2);
             this.Form3.Location = new System.Drawing.Point(4, 22);
             this.Form3.Margin = new System.Windows.Forms.Padding(2);
@@ -196,43 +202,6 @@
             this.Form3.TabIndex = 2;
             this.Form3.Text = "Mi Maki";
             this.Form3.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewCheckBoxColumn1,
-            this.dataGridViewImageColumn1,
-            this.dataGridViewTextBoxColumn1});
-            this.dataGridView2.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 28;
-            this.dataGridView2.Size = new System.Drawing.Size(675, 326);
-            this.dataGridView2.TabIndex = 1;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.HeaderText = "";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.HeaderText = "";
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // Debug
             // 
@@ -256,6 +225,63 @@
             this.debugText.Size = new System.Drawing.Size(661, 344);
             this.debugText.TabIndex = 5;
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.miMakiSelec,
+            this.miMakiImagen,
+            this.miMakiNombre,
+            this.miMakiVersion,
+            this.miMakiDescripcion});
+            this.dataGridView2.DataSource = this.packageBindingSource;
+            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataGridView2.Location = new System.Drawing.Point(2, 2);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridView2.MultiSelect = false;
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 28;
+            this.dataGridView2.ShowEditingIcon = false;
+            this.dataGridView2.Size = new System.Drawing.Size(669, 329);
+            this.dataGridView2.TabIndex = 1;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick_1);
+            // 
+            // miMakiSelec
+            // 
+            this.miMakiSelec.HeaderText = "Seleccionada";
+            this.miMakiSelec.Name = "miMakiSelec";
+            this.miMakiSelec.ReadOnly = true;
+            this.miMakiSelec.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // miMakiImagen
+            // 
+            this.miMakiImagen.Description = "Imagen";
+            this.miMakiImagen.HeaderText = "Imagen";
+            this.miMakiImagen.Name = "miMakiImagen";
+            this.miMakiImagen.ReadOnly = true;
+            // 
+            // miMakiNombre
+            // 
+            this.miMakiNombre.HeaderText = "Nombre";
+            this.miMakiNombre.Name = "miMakiNombre";
+            this.miMakiNombre.ReadOnly = true;
+            // 
+            // miMakiVersion
+            // 
+            this.miMakiVersion.HeaderText = "Versión";
+            this.miMakiVersion.Name = "miMakiVersion";
+            this.miMakiVersion.ReadOnly = true;
+            // 
+            // miMakiDescripcion
+            // 
+            this.miMakiDescripcion.HeaderText = "Descripción";
+            this.miMakiDescripcion.Name = "miMakiDescripcion";
+            this.miMakiDescripcion.ReadOnly = true;
+            // 
             // packageBindingSource
             // 
             this.packageBindingSource.DataSource = typeof(Maki_Installer.Business.Package);
@@ -264,6 +290,26 @@
             // 
             this.makiInstallerBindingSource.DataSource = typeof(Maki_Installer.Business.MakiInstaller);
             this.makiInstallerBindingSource.CurrentChanged += new System.EventHandler(this.makiInstallerBindingSource_CurrentChanged);
+            // 
+            // miMakiDesinstalar
+            // 
+            this.miMakiDesinstalar.Location = new System.Drawing.Point(593, 333);
+            this.miMakiDesinstalar.Name = "miMakiDesinstalar";
+            this.miMakiDesinstalar.Size = new System.Drawing.Size(75, 23);
+            this.miMakiDesinstalar.TabIndex = 2;
+            this.miMakiDesinstalar.Text = "Desinstalar";
+            this.miMakiDesinstalar.UseVisualStyleBackColor = true;
+            this.miMakiDesinstalar.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // miMakiActualizar
+            // 
+            this.miMakiActualizar.Location = new System.Drawing.Point(512, 334);
+            this.miMakiActualizar.Name = "miMakiActualizar";
+            this.miMakiActualizar.Size = new System.Drawing.Size(75, 23);
+            this.miMakiActualizar.TabIndex = 3;
+            this.miMakiActualizar.Text = "Actualizar";
+            this.miMakiActualizar.UseVisualStyleBackColor = true;
+            this.miMakiActualizar.Click += new System.EventHandler(this.miMakiActualizar_Click);
             // 
             // Form1
             // 
@@ -280,9 +326,9 @@
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.Form3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.Debug.ResumeLayout(false);
             this.Debug.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.makiInstallerBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -298,10 +344,6 @@
         private System.Windows.Forms.TabPage Form3;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.BindingSource makiInstallerBindingSource;
         private System.Windows.Forms.BindingSource packageBindingSource;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
@@ -311,5 +353,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.TabPage Debug;
         private System.Windows.Forms.TextBox debugText;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn miMakiSelec;
+        private System.Windows.Forms.DataGridViewImageColumn miMakiImagen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn miMakiNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn miMakiVersion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn miMakiDescripcion;
+        private System.Windows.Forms.Button miMakiDesinstalar;
+        private System.Windows.Forms.Button miMakiActualizar;
     }
 }

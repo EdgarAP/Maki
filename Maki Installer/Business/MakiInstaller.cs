@@ -35,6 +35,11 @@ namespace Maki_Installer.Business
             updateLocalRepository();
             return repo.repository;
         }
+        internal Collection<OneGetPackage> getInstalledPackageList()
+        {
+            Collection<string> bruto = man.getInstalledPackageList();
+            return convertStringtoOGP(bruto);
+        }
 
     }
 }

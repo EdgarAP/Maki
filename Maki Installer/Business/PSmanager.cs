@@ -72,6 +72,10 @@ namespace Maki_Installer.Business
         {
             return oneget.getPackageListLocal();
         } //return a list of all oneget packages available LOCALLY STORED
+        internal Collection<string> getInstalledPackageList()
+        {
+            return oneget.getInstalledPackageList();
+        } //return a list of all oneget packages available LOCALLY STORED
 
         //INSTALL
         internal bool installChoco()

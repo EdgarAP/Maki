@@ -20,9 +20,17 @@ namespace Maki_Installer.PS
                 using (powershell)
                 {
                     powershell.Runspace = myRunSpace;
-                    powershell.AddCommand("setExecutionPolicy");
+                    powershell.AddCommand("set-ExecutionPolicy");
                     powershell.AddArgument("remotesigned");
                     powershell.AddParameter("force");
+                    //powershell.AddScript("Echo Write-Host \"Set-ExecutionPolicy remotesigned -force\" | PowerShell.exe -noprofile -");
+                    /*powershell.AddCommand("Write-output");
+                    powershell.AddArgument("Write-Host \"Set-ExecutionPolicy remotesigned -force\" ");
+                    powershell.AddCommand("PowerShell.exe");
+                    powershell.AddParameter("noprofile");
+                    powershell.AddParameter("command");*/
+                    
+
                     powershell.Invoke();
                 }
                 powershell = null;

@@ -53,10 +53,10 @@ namespace Maki_Installer.IU
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Business.MakiInstaller maki = new Business.MakiInstaller();
-            maki.updateRemoteRepository();
-            progressBar1.Value = 100;
-            progressBar1.Update();
-        }
+            Business.PSmanager maki = new Business.PSmanager();
+            maki.installChoco();
+            
+
+            }
     }
 }
