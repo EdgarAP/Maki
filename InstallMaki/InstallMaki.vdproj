@@ -145,20 +145,6 @@
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_C564F07172994212A5C047FEA06B5D2B"
-            {
-            "Name" = "8:cmd.exe"
-            "Condition" = "8:"
-            "Object" = "8:_2CCDE98135FE47DD99F2B6B216ECE1AF"
-            "FileType" = "3:2"
-            "InstallAction" = "3:2"
-            "Arguments" = "8:/c cmd.exe /c \"[TARGETDIR]tomate.bat\""
-            "EntryPoint" = "8:"
-            "Sequence" = "3:2"
-            "Identifier" = "8:_8A8B4E68_6E84_40A2_A0C1_7BAB1CFEE6EE"
-            "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:"
-            }
             "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_DB29038EA1A54F348C9E21CC2364CB73"
             {
             "Name" = "8:Ninite NET 462 Installer.exe"
@@ -406,7 +392,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:InstallMaki"
         "ProductCode" = "8:{F9301342-A937-46FB-A464-7821E5DCFC93}"
-        "PackageCode" = "8:{A7961818-92C4-47DC-A99F-12C97736B2A8}"
+        "PackageCode" = "8:{754763C8-9BC6-4E4D-B4B2-8D1F9936C441}"
         "UpgradeCode" = "8:{4E4ABA40-CAD0-47C3-94C7-C2BED342AD1F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

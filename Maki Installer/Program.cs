@@ -8,6 +8,7 @@ namespace Maki_Installer
 {
     static class Program
     {
+        public static IU.Form1 form1;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +17,8 @@ namespace Maki_Installer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new IU.Form1());
+            form1 = new IU.Form1();
+            Application.Run(form1);
         }
     }
 }

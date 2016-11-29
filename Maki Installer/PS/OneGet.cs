@@ -25,5 +25,35 @@ namespace Maki_Installer.PS
         {
             return invokeString("choco list -l | where { ($_) -notlike \"*choco*\"} | where { ($_) -notlike \"*packages installed*\"}");
         }
+        internal string getCurrentPackageVersion(string package)
+        {
+            Collection<string> linea = new Collection<string>();
+            string lineasuelta = "";
+            string result = "";
+            try
+            {
+               linea = invokeString("chocolatey version " + package + " | where {($_) -like \"" + package + " v*.*\"}");
+                lineasuelta = linea.ElementAt<string>(0);
+            
+            int primerEspacio = lineasuelta.IndexOf(' ');
+            int segundoEspacio = lineasuelta.Substring(primerEspacio+1).IndexOf(' ');
+            result = lineasuelta.Substring(primerEspacio + 1, segundoEspacio);
+            }
+            catch (Exception e) {
+                Console.WriteLine("{0} Exception caught.", e);
+                try
+                {
+                    linea = invokeString("chocolatey version " + package + " | where {($_) -like \"*" + package + " *.*\"}");
+                    lineasuelta = linea.ElementAt<string>(0);
+                    int primerEspacio = lineasuelta.IndexOf("Version");
+                    int segundoEspacio = lineasuelta.Substring(primerEspacio + 8).IndexOf(' ');
+                    result = "v" + lineasuelta.Substring(primerEspacio + 8, segundoEspacio);
+                }catch(Exception a)
+                {
+                    Console.WriteLine("{0} Exception caught.", a);
+                }
+            }
+            return result;
+        }
     }
 }
