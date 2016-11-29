@@ -40,26 +40,28 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Version = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.packageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Form3 = new System.Windows.Forms.TabPage();
-            this.Debug = new System.Windows.Forms.TabPage();
-            this.debugText = new System.Windows.Forms.TextBox();
+            this.miMakiRecargar = new System.Windows.Forms.Button();
+            this.miMakiActualizar = new System.Windows.Forms.Button();
+            this.miMakiDesinstalar = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.miMakiSelec = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.miMakiImagen = new System.Windows.Forms.DataGridViewImageColumn();
             this.miMakiNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.miMakiVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.miMakiDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.packageBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Debug = new System.Windows.Forms.TabPage();
+            this.debugText = new System.Windows.Forms.TextBox();
             this.makiInstallerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.miMakiDesinstalar = new System.Windows.Forms.Button();
-            this.miMakiActualizar = new System.Windows.Forms.Button();
+            this.installNPOld = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.Form3.SuspendLayout();
-            this.Debug.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).BeginInit();
+            this.Form3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.Debug.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.makiInstallerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -189,8 +191,13 @@
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.ReadOnly = true;
             // 
+            // packageBindingSource
+            // 
+            this.packageBindingSource.DataSource = typeof(Maki_Installer.Business.Package);
+            // 
             // Form3
             // 
+            this.Form3.Controls.Add(this.miMakiRecargar);
             this.Form3.Controls.Add(this.miMakiActualizar);
             this.Form3.Controls.Add(this.miMakiDesinstalar);
             this.Form3.Controls.Add(this.dataGridView2);
@@ -203,27 +210,35 @@
             this.Form3.Text = "Mi Maki";
             this.Form3.UseVisualStyleBackColor = true;
             // 
-            // Debug
+            // miMakiRecargar
             // 
-            this.Debug.AccessibleName = "Debug";
-            this.Debug.Controls.Add(this.debugText);
-            this.Debug.Location = new System.Drawing.Point(4, 22);
-            this.Debug.Name = "Debug";
-            this.Debug.Padding = new System.Windows.Forms.Padding(3);
-            this.Debug.Size = new System.Drawing.Size(673, 356);
-            this.Debug.TabIndex = 3;
-            this.Debug.Text = "Debug";
-            this.Debug.UseVisualStyleBackColor = true;
+            this.miMakiRecargar.Location = new System.Drawing.Point(5, 333);
+            this.miMakiRecargar.Name = "miMakiRecargar";
+            this.miMakiRecargar.Size = new System.Drawing.Size(103, 23);
+            this.miMakiRecargar.TabIndex = 4;
+            this.miMakiRecargar.Text = "Recargar lista";
+            this.miMakiRecargar.UseVisualStyleBackColor = true;
+            this.miMakiRecargar.Click += new System.EventHandler(this.miMakiRecargar_Click);
             // 
-            // debugText
+            // miMakiActualizar
             // 
-            this.debugText.Location = new System.Drawing.Point(6, 6);
-            this.debugText.Multiline = true;
-            this.debugText.Name = "debugText";
-            this.debugText.ReadOnly = true;
-            this.debugText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.debugText.Size = new System.Drawing.Size(661, 344);
-            this.debugText.TabIndex = 5;
+            this.miMakiActualizar.Location = new System.Drawing.Point(512, 333);
+            this.miMakiActualizar.Name = "miMakiActualizar";
+            this.miMakiActualizar.Size = new System.Drawing.Size(75, 23);
+            this.miMakiActualizar.TabIndex = 3;
+            this.miMakiActualizar.Text = "Actualizar";
+            this.miMakiActualizar.UseVisualStyleBackColor = true;
+            this.miMakiActualizar.Click += new System.EventHandler(this.miMakiActualizar_Click);
+            // 
+            // miMakiDesinstalar
+            // 
+            this.miMakiDesinstalar.Location = new System.Drawing.Point(593, 333);
+            this.miMakiDesinstalar.Name = "miMakiDesinstalar";
+            this.miMakiDesinstalar.Size = new System.Drawing.Size(75, 23);
+            this.miMakiDesinstalar.TabIndex = 2;
+            this.miMakiDesinstalar.Text = "Desinstalar";
+            this.miMakiDesinstalar.UseVisualStyleBackColor = true;
+            this.miMakiDesinstalar.Click += new System.EventHandler(this.miMakiDesinstalar_Click);
             // 
             // dataGridView2
             // 
@@ -254,7 +269,6 @@
             // 
             this.miMakiSelec.HeaderText = "Seleccionada";
             this.miMakiSelec.Name = "miMakiSelec";
-            this.miMakiSelec.ReadOnly = true;
             this.miMakiSelec.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // miMakiImagen
@@ -272,44 +286,54 @@
             // 
             // miMakiVersion
             // 
-            this.miMakiVersion.HeaderText = "Versión";
+            this.miMakiVersion.HeaderText = "Versión actual";
             this.miMakiVersion.Name = "miMakiVersion";
             this.miMakiVersion.ReadOnly = true;
             // 
             // miMakiDescripcion
             // 
-            this.miMakiDescripcion.HeaderText = "Descripción";
+            this.miMakiDescripcion.HeaderText = "Última versión";
             this.miMakiDescripcion.Name = "miMakiDescripcion";
             this.miMakiDescripcion.ReadOnly = true;
             // 
-            // packageBindingSource
+            // Debug
             // 
-            this.packageBindingSource.DataSource = typeof(Maki_Installer.Business.Package);
+            this.Debug.AccessibleName = "Debug";
+            this.Debug.Controls.Add(this.installNPOld);
+            this.Debug.Controls.Add(this.debugText);
+            this.Debug.Location = new System.Drawing.Point(4, 22);
+            this.Debug.Name = "Debug";
+            this.Debug.Padding = new System.Windows.Forms.Padding(3);
+            this.Debug.Size = new System.Drawing.Size(673, 356);
+            this.Debug.TabIndex = 3;
+            this.Debug.Text = "Debug";
+            this.Debug.UseVisualStyleBackColor = true;
+            // 
+            // debugText
+            // 
+            this.debugText.Location = new System.Drawing.Point(6, 6);
+            this.debugText.Multiline = true;
+            this.debugText.Name = "debugText";
+            this.debugText.ReadOnly = true;
+            this.debugText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.debugText.Size = new System.Drawing.Size(661, 344);
+            this.debugText.TabIndex = 5;
+            this.debugText.Tag = "debugText";
             // 
             // makiInstallerBindingSource
             // 
             this.makiInstallerBindingSource.DataSource = typeof(Maki_Installer.Business.MakiInstaller);
             this.makiInstallerBindingSource.CurrentChanged += new System.EventHandler(this.makiInstallerBindingSource_CurrentChanged);
             // 
-            // miMakiDesinstalar
+            // installNPOld
             // 
-            this.miMakiDesinstalar.Location = new System.Drawing.Point(593, 333);
-            this.miMakiDesinstalar.Name = "miMakiDesinstalar";
-            this.miMakiDesinstalar.Size = new System.Drawing.Size(75, 23);
-            this.miMakiDesinstalar.TabIndex = 2;
-            this.miMakiDesinstalar.Text = "Desinstalar";
-            this.miMakiDesinstalar.UseVisualStyleBackColor = true;
-            this.miMakiDesinstalar.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // miMakiActualizar
-            // 
-            this.miMakiActualizar.Location = new System.Drawing.Point(512, 334);
-            this.miMakiActualizar.Name = "miMakiActualizar";
-            this.miMakiActualizar.Size = new System.Drawing.Size(75, 23);
-            this.miMakiActualizar.TabIndex = 3;
-            this.miMakiActualizar.Text = "Actualizar";
-            this.miMakiActualizar.UseVisualStyleBackColor = true;
-            this.miMakiActualizar.Click += new System.EventHandler(this.miMakiActualizar_Click);
+            this.installNPOld.Location = new System.Drawing.Point(563, 333);
+            this.installNPOld.Name = "installNPOld";
+            this.installNPOld.Size = new System.Drawing.Size(75, 23);
+            this.installNPOld.TabIndex = 6;
+            this.installNPOld.Text = "NP++ 6.7.5";
+            this.installNPOld.UseVisualStyleBackColor = true;
+            this.installNPOld.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
@@ -325,11 +349,11 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).EndInit();
             this.Form3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.Debug.ResumeLayout(false);
             this.Debug.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.makiInstallerBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -352,14 +376,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Version;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.TabPage Debug;
-        private System.Windows.Forms.TextBox debugText;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button miMakiDesinstalar;
+        private System.Windows.Forms.Button miMakiActualizar;
         private System.Windows.Forms.DataGridViewCheckBoxColumn miMakiSelec;
         private System.Windows.Forms.DataGridViewImageColumn miMakiImagen;
         private System.Windows.Forms.DataGridViewTextBoxColumn miMakiNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn miMakiVersion;
         private System.Windows.Forms.DataGridViewTextBoxColumn miMakiDescripcion;
-        private System.Windows.Forms.Button miMakiDesinstalar;
-        private System.Windows.Forms.Button miMakiActualizar;
+        private System.Windows.Forms.Button miMakiRecargar;
+        public System.Windows.Forms.TextBox debugText;
+        private System.Windows.Forms.Button installNPOld;
     }
 }

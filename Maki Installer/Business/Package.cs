@@ -10,6 +10,7 @@ namespace Maki_Installer.Business
 {
     internal abstract class Package
     { //Carlos Salgado
+
         internal struct OneGetPackage
         {
 
@@ -113,19 +114,28 @@ namespace Maki_Installer.Business
         /* CONVIERTE UN STRING A OGP CON EL SUMMARY Y STATUS EN BLANCO (PARA PAQUETES INSTALADOS) */
         internal static Collection<OneGetPackage> convertStringtoOGP(Collection<string> str)
         {
+            PS.OneGet oneget = new PS.OneGet();
             Collection<OneGetPackage> result1 = new Collection<OneGetPackage>();
             OneGetPackage result = new OneGetPackage();
             string count;
-            foreach (string s in str)
+            try
             {
-                int index = s.LastIndexOf(" ");
-                count = s.Substring(0, index);
-                result.name = count;
-                count = s.Substring(index + 1);
-                result.version = count;
-                result.summary = "";
-                result.status = "";
-                result1.Add(result);
+                foreach (string s in str)
+                {
+                    int index = s.LastIndexOf(" ");
+                    count = s.Substring(0, index);
+                    result.name = count;
+                    string nombre = count;
+                    count = s.Substring(index + 1);
+                    result.version = count;
+                    string currentVersion = oneget.getCurrentPackageVersion(nombre);
+                    result.summary = currentVersion;
+                    result.status = "";
+                    result1.Add(result);
+                }
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Source);
             }
             return result1;
         }

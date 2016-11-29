@@ -15,9 +15,12 @@ namespace Maki_Installer.IU
 {
     public partial class Form1 : Form
     {
+        PS.OneGet oneget = new PS.OneGet();
         Business.MakiInstaller maki = new Business.MakiInstaller();
         internal PSmanager man = new PSmanager();
-        
+        Collection<Business.Package.OneGetPackage> listaInstalados = new Collection<Business.Package.OneGetPackage>();
+
+
         public Form1()
         {
                 InitializeComponent();
@@ -94,16 +97,25 @@ namespace Maki_Installer.IU
             firefox.status = "Available";
             firefox.name = "Firefox";
             firefox.summary = "Bringing together all kinds of awesomeness to make browsing better for you";
-            firefox.version = "49.0.2.20161024";
+            firefox.version = oneget.getCurrentPackageVersion(firefox.name);
+
             Business.Package.OneGetPackage chrome = new Business.Package.OneGetPackage();
             chrome.status = "Available";
             chrome.name = "GoogleChrome";
             chrome.summary = "";
-            chrome.version = "54.0.2840.71";
+            chrome.version = oneget.getCurrentPackageVersion(chrome.name);
+
+            Business.Package.OneGetPackage notepadplusplus = new Business.Package.OneGetPackage();
+            notepadplusplus.status = "Available";
+            notepadplusplus.name = "Notepadplusplus";
+            notepadplusplus.summary = "Notepad++ is a free (as in \"free speech\" and also as in \"free beer\") source code editor and Notepad replacement that supports several languages.";
+            notepadplusplus.version = oneget.getCurrentPackageVersion(notepadplusplus.name);
 
             Collection<Business.Package.OneGetPackage> lista = new Collection<Business.Package.OneGetPackage>();
             lista.Add(firefox);
             lista.Add(chrome);
+            lista.Add(notepadplusplus);
+
             dataGridView1.DataSource = lista;
            
             Column3.DataPropertyName = "name";
@@ -117,13 +129,13 @@ namespace Maki_Installer.IU
             dataGridView2.DataSource = listaInstalados;
             InstaladoNombre.DataPropertyName = "";*/
 
-            Collection<Business.Package.OneGetPackage> listaInstalados = new Collection<Business.Package.OneGetPackage>();
             listaInstalados = maki.getInstalledPackageList();
             dataGridView2.DataSource = listaInstalados;
 
             miMakiNombre.DataPropertyName = "name";
             miMakiVersion.DataPropertyName = "version";
             miMakiDescripcion.DataPropertyName = "summary";
+            
 
 
 
@@ -160,14 +172,62 @@ namespace Maki_Installer.IU
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void miMakiDesinstalar_Click(object sender, EventArgs e)
         {
+            
+            string message = "";
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                DataGridViewCheckBoxCell checkBoxCell = row.Cells[0] as DataGridViewCheckBoxCell;
+                bool checkBox = (null != checkBoxCell && null != checkBoxCell.Value && true == (bool)checkBoxCell.Value);
+                if (checkBox == true)
+                {
+                    Console.WriteLine("Desinstalar");
+                    string nombre = "";
+                    nombre += (string)row.Cells["miMakiNombre"].Value;
+                    Console.WriteLine(nombre);
+                    Collection<string> display;
+                    var result = MessageBox.Show("¿Estas seguro de que deseas desinstalar "+ nombre + "?", "Desinstalar",
+                                 MessageBoxButtons.YesNoCancel,
+                                 MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                        display = man.uninstall(nombre);
+                    else return;
+
+                    string displayToString = "";
+
+                    foreach (string a in display)
+                    {
+                        debugText.AppendText(a + "\n");
+                        displayToString += a + " ";
+
+                    }
+
+                    if (displayToString.Contains("successfully uninstalled"))
+                    {
+                        message += nombre + " ha sido desinstalado correctamente.\n";
+                    }
+                    else
+                        message += nombre + " no se ha podido desinstalar.\n";
+
+                    debugText.AppendText("\n");
+                    debugText.AppendText("\n");
+
+
+
+                }
+            }
+            MessageBox.Show(message, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
         }
+    
 
         private void miMakiActualizar_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+
+            string message = "";
+            foreach (DataGridViewRow row in dataGridView2.Rows)
             {
                 DataGridViewCheckBoxCell checkBoxCell = row.Cells[0] as DataGridViewCheckBoxCell;
                 bool checkBox = (null != checkBoxCell && null != checkBoxCell.Value && true == (bool)checkBoxCell.Value);
@@ -175,22 +235,49 @@ namespace Maki_Installer.IU
                 {
                     Console.WriteLine("Ola k ase");
                     string nombre = "";
-                    nombre += (string)row.Cells["miMakiSelec"].Value;
+                    nombre += (string)row.Cells["miMakiNombre"].Value;
                     Console.WriteLine(nombre);
                     Collection<string> display = man.upgrade(nombre);
 
-
+                    string displayToString = "";
 
                     foreach (string a in display)
                     {
                         debugText.AppendText(a + "\n");
+                        displayToString += a + " ";
 
                     }
+
+                    if (displayToString.Contains("is the latest version available based on your source")){
+                        message += nombre + " ya está en su ultima versión.\n";
+                    }
+                    else
+                        message += nombre + " ha sido actualizado.\n";
+
                     debugText.AppendText("\n");
                     debugText.AppendText("\n");
+
+                    
+
                 }
             }
+            MessageBox.Show(message, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+
+        }
+
+        private void miMakiRecargar_Click(object sender, EventArgs e)
+        {
+            listaInstalados = maki.getInstalledPackageList();
+            dataGridView2.DataSource = listaInstalados;
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Collection<string> display = man.install("notepadplusplus", "6.9.2");
+            foreach (string a in display)
+                debugText.AppendText(a + "\n");
         }
     }
 }
