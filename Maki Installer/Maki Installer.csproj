@@ -68,6 +68,12 @@
     <Compile Include="IU\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IU\Progreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IU\Progreso.Designer.cs">
+      <DependentUpon>Progreso.cs</DependentUpon>
+    </Compile>
     <Compile Include="PS\Installation.cs" />
     <Compile Include="PS\OneGet.cs" />
     <Compile Include="PS\PSInvoker.cs" />
@@ -94,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IU\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IU\Progreso.resx">
+      <DependentUpon>Progreso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IU\TestPS-IU.resx">
       <DependentUpon>TestPS-IU.cs</DependentUpon>

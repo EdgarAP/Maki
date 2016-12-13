@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //using Maki_Installer.Business.Package;
@@ -34,7 +35,12 @@ namespace Maki_Installer.IU
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            Collection<string> a = new Collection<string>();
+            a.Add("firefox");
+            a.Add("googlechrome");
+            a.Add("git");
+            Progreso p = new Progreso(a, "i");
+            p.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -261,6 +267,7 @@ namespace Maki_Installer.IU
 
                 }
             }
+            
             MessageBox.Show(message, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
@@ -280,5 +287,22 @@ namespace Maki_Installer.IU
                 debugText.AppendText(a + "\n");
             
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Thread t = new Thread(new ThreadStart(ThreadProc));
+            t.Start();
+            Thread.Sleep(2000);
+            if (t.IsAlive)
+                t.Abort();
+           
+        }
+
+        void ThreadProc()
+        {
+            MessageBox.Show("MessageBox");
+            
+        }
+        
     }
 }

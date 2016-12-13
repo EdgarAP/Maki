@@ -40,7 +40,6 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Version = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.packageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Form3 = new System.Windows.Forms.TabPage();
             this.miMakiRecargar = new System.Windows.Forms.Button();
             this.miMakiActualizar = new System.Windows.Forms.Button();
@@ -52,16 +51,18 @@
             this.miMakiVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.miMakiDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Debug = new System.Windows.Forms.TabPage();
-            this.debugText = new System.Windows.Forms.TextBox();
-            this.makiInstallerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button2 = new System.Windows.Forms.Button();
             this.installNPOld = new System.Windows.Forms.Button();
+            this.debugText = new System.Windows.Forms.TextBox();
+            this.packageBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.makiInstallerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).BeginInit();
             this.Form3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.Debug.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.makiInstallerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -191,10 +192,6 @@
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.ReadOnly = true;
             // 
-            // packageBindingSource
-            // 
-            this.packageBindingSource.DataSource = typeof(Maki_Installer.Business.Package);
-            // 
             // Form3
             // 
             this.Form3.Controls.Add(this.miMakiRecargar);
@@ -299,6 +296,7 @@
             // Debug
             // 
             this.Debug.AccessibleName = "Debug";
+            this.Debug.Controls.Add(this.button2);
             this.Debug.Controls.Add(this.installNPOld);
             this.Debug.Controls.Add(this.debugText);
             this.Debug.Location = new System.Drawing.Point(4, 22);
@@ -308,6 +306,26 @@
             this.Debug.TabIndex = 3;
             this.Debug.Text = "Debug";
             this.Debug.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(463, 333);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // installNPOld
+            // 
+            this.installNPOld.Location = new System.Drawing.Point(563, 333);
+            this.installNPOld.Name = "installNPOld";
+            this.installNPOld.Size = new System.Drawing.Size(75, 23);
+            this.installNPOld.TabIndex = 6;
+            this.installNPOld.Text = "NP++ 6.7.5";
+            this.installNPOld.UseVisualStyleBackColor = true;
+            this.installNPOld.Click += new System.EventHandler(this.button2_Click);
             // 
             // debugText
             // 
@@ -320,20 +338,14 @@
             this.debugText.TabIndex = 5;
             this.debugText.Tag = "debugText";
             // 
+            // packageBindingSource
+            // 
+            this.packageBindingSource.DataSource = typeof(Maki_Installer.Business.Package);
+            // 
             // makiInstallerBindingSource
             // 
             this.makiInstallerBindingSource.DataSource = typeof(Maki_Installer.Business.MakiInstaller);
             this.makiInstallerBindingSource.CurrentChanged += new System.EventHandler(this.makiInstallerBindingSource_CurrentChanged);
-            // 
-            // installNPOld
-            // 
-            this.installNPOld.Location = new System.Drawing.Point(563, 333);
-            this.installNPOld.Name = "installNPOld";
-            this.installNPOld.Size = new System.Drawing.Size(75, 23);
-            this.installNPOld.TabIndex = 6;
-            this.installNPOld.Text = "NP++ 6.7.5";
-            this.installNPOld.UseVisualStyleBackColor = true;
-            this.installNPOld.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
@@ -344,16 +356,16 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.ShowIcon = false;
-            this.Text = "Form1";
+            this.Text = "Maki Installer";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).EndInit();
             this.Form3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.Debug.ResumeLayout(false);
             this.Debug.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.makiInstallerBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -387,5 +399,6 @@
         private System.Windows.Forms.Button miMakiRecargar;
         public System.Windows.Forms.TextBox debugText;
         private System.Windows.Forms.Button installNPOld;
+        private System.Windows.Forms.Button button2;
     }
 }
