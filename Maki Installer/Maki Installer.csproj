@@ -36,6 +36,18 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -68,6 +80,18 @@
     <Compile Include="IU\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IU\MetroProgreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IU\MetroProgreso.Designer.cs">
+      <DependentUpon>MetroProgreso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IU\MetroIU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IU\MetroIU.Designer.cs">
+      <DependentUpon>MetroIU.cs</DependentUpon>
+    </Compile>
     <Compile Include="IU\Progreso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +121,12 @@
     <Compile Include="Business\PSmanager.cs" />
     <EmbeddedResource Include="IU\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IU\MetroProgreso.resx">
+      <DependentUpon>MetroProgreso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IU\MetroIU.resx">
+      <DependentUpon>MetroIU.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IU\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
@@ -136,7 +166,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

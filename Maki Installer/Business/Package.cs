@@ -89,6 +89,7 @@ namespace Maki_Installer.Business
                 result.status = count.Value.ToString()  ?? " ";
                 count = pso.Properties["Summary"];
                 if (count.Value != null) result.summary = count.Value.ToString() ?? " ";
+                else result.summary = " ";
                 count = pso.Properties["Name"];
                 result.name = count.Value.ToString() ?? " ";
                 count = pso.Properties["Version"];

@@ -10,11 +10,15 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework.Components;
+using MetroFramework.Forms;
+using MetroFramework.Drawing;
+using MetroFramework.Controls;
 //using Maki_Installer.Business.Package;
 
 namespace Maki_Installer.IU
 {
-    public partial class Form1 : Form
+    public partial class Form1 : MetroForm
     {
         PS.OneGet oneget = new PS.OneGet();
         Business.MakiInstaller maki = new Business.MakiInstaller();
@@ -303,6 +307,10 @@ namespace Maki_Installer.IU
             MessageBox.Show("MessageBox");
             
         }
-        
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
