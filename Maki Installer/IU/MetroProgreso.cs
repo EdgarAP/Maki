@@ -17,7 +17,7 @@ namespace Maki_Installer.IU
 {
     public partial class MetroProgreso : MetroForm
     {
-
+        BackgroundWorker backgroundWorker1 = new BackgroundWorker();
         Collection<string> paquetes;
         Collection<string> display;
         string modo;
@@ -26,6 +26,7 @@ namespace Maki_Installer.IU
             internal string name;
             internal string estado;
         }
+        Collection<Pkts> pkts = new Collection<Pkts>();
 
         public MetroProgreso(Collection<string> paquetes, string modo)
         {
@@ -36,13 +37,20 @@ namespace Maki_Installer.IU
             this.Text = modo;
             this.Shown += new System.EventHandler(this.Progreso_Shown);
 
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.WorkerSupportsCancellation = true;
+            backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
+            backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker1_ProgressChanged);
+            backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker1_RunWorkerCompleted);
+
         }
 
-        private void Progreso_Shown(object sender, EventArgs e)
-        {
-            int i = 0;
 
-            Collection<Pkts> pkts = new Collection<Pkts>();
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+            int i = 0;
+            BackgroundWorker worker = sender as BackgroundWorker;
             foreach (string pkt in paquetes)
             {
                 i++;
@@ -51,8 +59,6 @@ namespace Maki_Installer.IU
                 pk.estado = "En espera";
                 pkts.Add(pk);
             }
-            textBox1.Clear(); foreach (Pkts a in pkts) { textBox1.AppendText(a.name + " - " + a.estado + "\n"); }
-
             Collection<string> result = new Collection<string>();
             using (Runspace myRunSpace = RunspaceFactory.CreateRunspace())
             {
@@ -62,8 +68,8 @@ namespace Maki_Installer.IU
                 powershell.Runspace = myRunSpace;
                 using (powershell)
                 {
-                    
-                   
+
+
                     Application.DoEvents();
 
                     foreach (string paquete in paquetes)
@@ -78,12 +84,7 @@ namespace Maki_Installer.IU
                             pk1.estado = "En proceso";
                             pkts.Add(pk1);
                         }
-                        textBox1.Clear(); foreach (Pkts a in pkts)
-                        {
-                            textBox1.AppendText(a.name + " - " + a.estado + "\n");
-                            textBox2.Clear();
-                            textBox2.AppendText(a.name + " se está procesando");
-                        }
+                        worker.ReportProgress((i));
 
                         if (modo == "Instalación") powershell.AddScript("choco install " + paquete + " -y --allowemptychecksum");
                         else if (modo == "Desinstalación") powershell.AddScript("choco uninstall " + paquete + " -y --remove-dependencies");
@@ -101,7 +102,7 @@ namespace Maki_Installer.IU
                                     pk1.estado = "Éxito";
                                     pkts.Add(pk1);
 
-                                    textBox1.Clear(); foreach (Pkts a in pkts) { textBox1.AppendText(a.name + " - " + a.estado + "\n"); }
+                                    worker.ReportProgress((i));
                                 }
                                 else
                                 {
@@ -111,24 +112,15 @@ namespace Maki_Installer.IU
                                     pkts.Remove(pk1);
                                     pk1.estado = "Fallo";
                                     pkts.Add(pk1);
-                                    textBox1.Clear(); foreach (Pkts a in pkts) { textBox1.AppendText(a.name + " - " + a.estado + "\n"); }
+                                    worker.ReportProgress((i));
                                 }
                         }
-                        
-                        Application.DoEvents();
-                        textBox2.Clear();
-                        textBox2.AppendText("Se ha completado la " + modo);
+                        worker.ReportProgress((i));
                     }
                 }
                 powershell = null;
                 myRunSpace.Close();
-
-                metroProgressSpinner1.Value = 200;
-                metroProgressSpinner1.Spinning = false;
-                metroProgressSpinner1.Visible = false;
-                metroProgressSpinner1.Update();
-
-                finishedImage.Visible = true;
+                
 
                 this.Text = "Finalizado";
 
@@ -136,14 +128,34 @@ namespace Maki_Installer.IU
             }
         }
 
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            textBox1.Clear(); foreach (Pkts a in pkts) { textBox1.AppendText(a.name + " - " + a.estado + "\n"); }
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            metroProgressSpinner1.Value = 200;
+            metroProgressSpinner1.Spinning = false;
+            metroProgressSpinner1.Visible = false;
+            metroProgressSpinner1.Update();
+            finishedImage.Visible = true;
+            textBox2.AppendText(modo + " completada");
+        }
+
+        private void Progreso_Shown(object sender, EventArgs e)
+        {
+            if (backgroundWorker1.IsBusy != true)
+            {
+                backgroundWorker1.RunWorkerAsync();
+            }
+        }
+
+        public void metroProgressSpinner1_Click(object sender, EventArgs e) { }
         private void Form3_Load(object sender, EventArgs e)
         {
             
-        }
-
-        private void metroProgressSpinner1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -71,7 +71,7 @@ namespace Maki_Installer.IU
             a.Add("googlechrome");
             a.Add("notepadplusplus");
             MetroProgreso p = new MetroProgreso(a, "Instalación");
-            p.Show();
+            p.ShowDialog();
         }
 
         private void botonInstalar_Click(object sender, EventArgs e)
@@ -89,7 +89,7 @@ namespace Maki_Installer.IU
                 }
             }
             MetroProgreso p = new MetroProgreso(ainstalar, "Instalación");
-            p.Show();
+            p.ShowDialog();
         }
 
         private void botonDesinstalar_Click(object sender, EventArgs e)
@@ -117,7 +117,7 @@ namespace Maki_Installer.IU
             }
 
             MetroProgreso p = new MetroProgreso(desinstalar, "Desinstalación");
-            p.Show();
+            p.ShowDialog();
 
         }
 
@@ -140,7 +140,7 @@ namespace Maki_Installer.IU
                 }
             }
             MetroProgreso p = new MetroProgreso(actualizar, "Actualización");
-            p.Show();
+            p.ShowDialog();
 
         }
 
@@ -173,7 +173,7 @@ namespace Maki_Installer.IU
             mes.Add("flashplayerplugin");
             mes.Add("adobereader");
             MetroProgreso p = new MetroProgreso(mes, "Instalación");
-            p.Show();
+            p.ShowDialog();
         }
 
         private void botonccleaner_Click(object sender, EventArgs e)
@@ -181,7 +181,7 @@ namespace Maki_Installer.IU
             Collection<string> mes = new Collection<string>();
             mes.Add("ccleaner");
             MetroProgreso p = new MetroProgreso(mes, "Instalación");
-            p.Show();
+            p.ShowDialog();
         }
 
         private void metroLabel1_Click(object sender, EventArgs e)

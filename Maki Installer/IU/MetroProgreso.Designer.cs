@@ -1,4 +1,6 @@
-﻿namespace Maki_Installer.IU
+﻿using System;
+
+namespace Maki_Installer.IU
 {
     partial class MetroProgreso
     {
@@ -46,6 +48,7 @@
             this.metroProgressSpinner1.Size = new System.Drawing.Size(50, 50);
             this.metroProgressSpinner1.TabIndex = 0;
             this.metroProgressSpinner1.UseSelectable = true;
+            this.metroProgressSpinner1.Value = 75;
             this.metroProgressSpinner1.Click += new System.EventHandler(this.metroProgressSpinner1_Click);
             // 
             // textBox1
@@ -147,6 +150,8 @@
             this.ResumeLayout(false);
 
         }
+
+        
 
         #endregion
 
